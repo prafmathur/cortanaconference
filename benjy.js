@@ -2,18 +2,48 @@
 var robot = require("robotjs");
 var http = require("http");
 
-http.get('http://nafantest.cloudapp.net:65389/operation', (res) => {
-  res.setEncoding('utf8');
-  let rawData = '';
-  res.on('data', (chunk) => { rawData += chunk; });
-  res.on('end', () => {
-	  const parsedData = JSON.parse(rawData);
-	  operationName = parsedData["OperationName"];
-	  controlMouseBasedOnOperation(operationName);
-  });
-}).on('error', (e) => {
-  console.error(`Got error: ${e.message}`);
-});
+
+// Loop to check every timeout seconds
+timeout = 2;
+setInterval(tryGetCommand, timeout * 1000)
+
+function tryGetCommand() {
+	http.get('http://nafantest.cloudapp.net:65389/operation', (res) => {
+	  if (res.statusCode == 500) {
+	  	console.log("No new commands")
+	  }
+	  else {
+		  res.setEncoding('utf8');
+		  let rawData = '';
+		  res.on('data', (chunk) => { rawData += chunk; });
+		  res.on('end', () => {
+			  const parsedData = JSON.parse(rawData);
+			  operationName = parsedData["OperationName"];
+			  console.log("Received operation:" + operationName);
+			  controlMouseBasedOnOperation(operationName);
+		  });	
+	  }
+	}).on('error', (e) => {
+	  console.error(`Got error: ${e.message}`);
+	});
+}
+
+//-----------------------------------------------
+// Uncomment section below for single get request
+//-----------------------------------------------
+
+// http.get('http://nafantest.cloudapp.net:65389/operation', (res) => {
+//   res.setEncoding('utf8');
+//   let rawData = '';
+//   res.on('data', (chunk) => { rawData += chunk; });
+//   res.on('end', () => {
+// 	  const parsedData = JSON.parse(rawData);
+// 	  operationName = parsedData["OperationName"];
+// 	  controlMouseBasedOnOperation(operationName);
+//   });
+// }).on('error', (e) => {
+//   console.error(`Got error: ${e.message}`);
+// });
 
 function controlMouseBasedOnOperation(operation) {
 
