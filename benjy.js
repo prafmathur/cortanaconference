@@ -76,18 +76,37 @@ function controlMouseBasedOnOperation(operation) {
 		case 'Record':
 		case 'Share':
 			robot.moveMouse (511,533);
-			rpbpt.mouseClick();
+			robot.mouseClick();
 		case 'Add':
 			robot.moveMouse(1163,68);
 			robot.mouseClick();
 			robot.moveMouse(1151,103);
 			robot.mouseClick();
-			robot.typeString('srivasams');
-			robot.keyTap(enter);
+			robot.typeString('srvasams');
+			robot.keyTap("enter");
 		case 'End':
 			robot.moveMouse (565,530);
 			robot.mouseClick();
 		default:
 			console.log("don't support");
 	}*/
+	
+	// robot.moveMouse(29,240);
+	// robot.mouseClick();
+	// robot.moveMouse(1203,77);
+	// robot.mouseClick();
+	
+	// robot.moveMouse (511,533);
+	// robot.mouseClick();
+	
+	robot.moveMouse(1163,68);
+	robot.mouseClick();
+	robot.moveMouse(1151,103);
+	robot.mouseClick();
+	robot.typeString('srvasams');
+	robot.moveMouse(1067,197);
+	robot.mouseClick();
+	
+	// robot.moveMouse (565,530);
+	// robot.mouseClick();			
 }
