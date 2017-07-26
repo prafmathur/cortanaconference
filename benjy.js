@@ -47,66 +47,38 @@ function tryGetCommand() {
 
 function controlMouseBasedOnOperation(operation) {
 
-// Sneha do stuff here
-// Documentation at http://robotjs.io/docs/examples
 
 	// Speed up the mouse.
 	// robot.setMouseDelay(2);
 
-	// var twoPI = Math.PI * 2.0;
-	// var screenSize = robot.getScreenSize();
-	// var height = (screenSize.height / 2) - 10;
-	// var width = screenSize.width;
-
-	// for (var x = 0; x < width; x++)
-	// {
-	// 	y = height * Math.sin((twoPI * x) / width) + height;
-	// 	robot.moveMouse(x, y);
-	// }
 	console.log(operation);
 	var screenSize = robot.getScreenSize();
 	var height = (screenSize.height / 2) -10;
 	var width = screenSize.width;
-	/*switch(operation){
+	switch(operation){
 		case 'Join':
 			robot.moveMouse(29,240);
 			robot.mouseClick();
 			robot.moveMouse(1203,77);
 			robot.mouseClick();
-		case 'Record':
+			break;
 		case 'Share':
-			robot.moveMouse (511,533);
+			robot.moveMouse (507,541);
 			robot.mouseClick();
+			break;
 		case 'Add':
-			robot.moveMouse(1163,68);
-			robot.mouseClick();
 			robot.moveMouse(1151,103);
 			robot.mouseClick();
-			robot.typeString('srvasams');
-			robot.keyTap("enter");
+			robot.typeString('nafan');
+			setTimeout(function(){robot.moveMouse (1159,155); robot.mouseClick();},1000);
+			break;
 		case 'End':
-			robot.moveMouse (565,530);
+			robot.moveMouse(568,544);
 			robot.mouseClick();
+			break;
+		case 'Record':
 		default:
 			console.log("don't support");
-	}*/
-	
-	// robot.moveMouse(29,240);
-	// robot.mouseClick();
-	// robot.moveMouse(1203,77);
-	// robot.mouseClick();
-	
-	// robot.moveMouse (511,533);
-	// robot.mouseClick();
-	
-	robot.moveMouse(1163,68);
-	robot.mouseClick();
-	robot.moveMouse(1151,103);
-	robot.mouseClick();
-	robot.typeString('srvasams');
-	robot.moveMouse(1067,197);
-	robot.mouseClick();
-	
-	// robot.moveMouse (565,530);
-	// robot.mouseClick();			
+	}
+
 }
