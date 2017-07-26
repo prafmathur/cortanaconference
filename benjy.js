@@ -33,5 +33,31 @@ function controlMouseBasedOnOperation(operation) {
 	// 	y = height * Math.sin((twoPI * x) / width) + height;
 	// 	robot.moveMouse(x, y);
 	// }
-
+	console.log(operation);
+	var screenSize = robot.getScreenSize();
+	var height = (screenSize.height / 2) -10;
+	var width = screenSize.width;
+	/*switch(operation){
+		case 'Join':
+			robot.moveMouse(29,240);
+			robot.mouseClick();
+			robot.moveMouse(1203,77);
+			robot.mouseClick();
+		case 'Record':
+		case 'Share':
+			robot.moveMouse (511,533);
+			rpbpt.mouseClick();
+		case 'Add':
+			robot.moveMouse(1163,68);
+			robot.mouseClick();
+			robot.moveMouse(1151,103);
+			robot.mouseClick();
+			robot.typeString('srivasams');
+			robot.keyTap(enter);
+		case 'End':
+			robot.moveMouse (565,530);
+			robot.mouseClick();
+		default:
+			console.log("don't support");
+	}*/
 }
