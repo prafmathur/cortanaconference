@@ -1,0 +1,95 @@
+SAY "Welcome. Let's get started!" 
+
+## Series of get_input and if statements will need to be replaced by functions
+## We also need to find a way to listen again after get_input
+## Possible for the above to be done in a While statment
+GET_INPUT
+##SAY "${USER_INPUT}"
+SET str_a = USER_INPUT
+SET str_a = str_a.lower()
+
+IF str_a == "start the meeting" or "start meeting" or "start a meeting"
+        ## Add functional code here to do the start up meeting actions
+        # We create an HTTP request object, specifying method and headers, and send that using a call to system.http
+        SET rest_request = create("mst.http.request", url = "http://nafantest.cloudapp.net:65389/join", method="POST") #ssshhhhh don't tell anyone my secret
+        # If this call fails then it is "caught" by the ON_ERROR clause below
+        CALL "system.http", "request", request=rest_request
+        ON_ERROR
+                SAY "Some kind of error happened in the call"
+                SAY CALL_ERROR.to_json() 
+        SAY "Your connection is great!"
+
+GET_INPUT
+##SAY "${USER_INPUT}"
+SET str_b = USER_INPUT
+SET str_b = str_b.lower()
+
+## Need to split the string to get the name
+IF str_b == "remind tara"
+        ## Add functional code here to do the start up meeting actions
+        # We create an HTTP request object, specifying method and headers, and send that using a call to system.http
+        SET rest_request = create("mst.http.request", url = "http://nafantest.cloudapp.net:65389/remind", method="POST") #ssshhhhh don't tell anyone my secret
+        # If this call fails then it is "caught" by the ON_ERROR clause below
+        CALL "system.http", "request", request=rest_request
+        ON_ERROR
+                SAY "Some kind of error happened in the call"
+                SAY CALL_ERROR.to_json() 
+        SAY "Ugh she's always late. Reminded."
+
+##GET_INPUT
+##SAY "${USER_INPUT}"
+##SET str_c = USER_INPUT
+##SET str_c = str_c.lower()
+
+##IF str_c == "record"
+        ##SAY "Recording"
+        ## Add functional code here to do the start up meeting actions
+        ## We create an HTTP request object, specifying method and headers, and send that using a call to system.http
+        ##SET rest_request = create("mst.http.request", url = "http://nafantest.cloudapp.net:65389/record", method="POST") #ssshhhhh don't tell anyone my secret
+        ## If this call fails then it is "caught" by the ON_ERROR clause below
+        ## CALL "system.http", "request", request=rest_request
+        ##ON_ERROR
+        ##        SAY "Some kind of error happened in the call"
+        ##        SAY CALL_ERROR.to_json()
+        ## SAY "Recording"
+GET_INPUT
+##SAY "${USER_INPUT}"
+SET str_e = USER_INPUT
+SET str_e = str_e.lower()
+
+IF str_e == "add nathan fan"
+        ##SAY "Welcome fam"
+        # We create an HTTP request object, specifying method and headers, and send that using a call to system.http
+        SET rest_request = create("mst.http.request", url = "http://nafantest.cloudapp.net:65389/add", method="POST") #ssshhhhh don't tell anyone my secret
+        # If this call fails then it is "caught" by the ON_ERROR clause below
+        CALL "system.http", "request", request=rest_request
+        ON_ERROR
+                SAY "Some kind of error happened in the call"
+                SAY CALL_ERROR.to_json()
+        SAY "Sure thing! Added Nathan Fan."
+
+GET_INPUT
+##SAY "${USER_INPUT}"
+SET str_d = USER_INPUT
+SET str_d = str_d.lower()
+
+IF str_d == "share my screen"
+        ##SAY "Screen shared"
+        ## Add functional code here to do the start up meeting actions
+        # We create an HTTP request object, specifying method and headers, and send that using a call to system.http
+        SET rest_request = create("mst.http.request", url = "http://nafantest.cloudapp.net:65389/share", method="POST") #ssshhhhh don't tell anyone my secret
+        # If this call fails then it is "caught" by the ON_ERROR clause below
+        CALL "system.http", "request", request=rest_request
+        ON_ERROR
+                SAY "Some kind of error happened in the call"
+                SAY CALL_ERROR.to_json()
+        SAY "You're now presenting"
+
+GET_INPUT
+##SAY "${USER_INPUT}"
+SET str_f = USER_INPUT
+SET str_f = str_f.lower()
+
+IF str_f == "bye" or "buy"
+        ## SET rest_request = create("mst.http.request", url = "http://nafantest.cloudapp.net:65389/end", method="POST") #ssshhhhh don't tell anyone my secret
+        SAY "Bye bye now"
